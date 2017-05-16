@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>SBY WP Meetup #3</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<style>
+			.reveal section img.logo {
+				border: 0
+			}
+			img.logo{
+				border-radius: 9999em;
+				max-height: 100px;
+				border:0;
+			}
+		</style>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" id="slides">
+				<section>
+					<h2>Who Am I</h2>
+					<span class="fragment">
+						<img src="images/ichigo.jpg" class="logo" />
+						<p>
+							Tony Sanjaya<br>
+							W : <a href="http://tony.sanjaya.info">tony.sanjaya.info</a><br>
+							E : <a href="mailto:tony@sanjaya.info">tony@sanjaya.info</a></p>
+					</span>
+					<span class="fragment">
+						<p>Web Developer at <a href="http://stampede-design.com" target="_blank">Stampede Design</a></p>
+					</span>
+					<span class="fragment">
+						<p>Content Manager at <a href="http://henshin.id" target="_blank">Henshin ID</a></p>
+					</span>
+				</section>
+				<section data-markdown>
+					##### Surabaya WordPress Meetup #3
+					# CREATE WORDPRESS THEME
+					*dengan 3 jurus
+				</section>
+				<section>
+					<h2>Starter Theme</h2>
+					<p class="fragment">
+						<a href="http://underscores.me/" target="_blank">Underscores</a>
+					</p>
+					<p class="fragment">
+						<a href="https://roots.io/sage/" target="_blank">Sage</a>
+					</p>
+				</section>
+				<section>
+					<h2>#1 Files</h2>
+					<ul>
+						<li class="fragment"><em>style.css</em> <span class="fragment"> -> identitas theme</span></li>
+						<li class="fragment"><em>functions.php</em> <span class="fragment"> -> menambahkan file css, js, functions</span></li>
+						<li class="fragment"><em>header.php</em> <span class="fragment"> -> logo, menu</span></li>
+						<li class="fragment"><em>footer.php</em> <span class="fragment"> -> footer menu, text</span></li>
+						<li class="fragment"><em>page.php</em> <span class="fragment"> -> generic content</span></li>
+						<li class="fragment"><em>etc.</em></li>
+					</ul>
+				</section>
+				<section>
+					<h2>#2 Loop</h2>
+					<pre>
+						<code class="hljs" data-trim contenteditable>
+							<?php $loop = new WP_Query( array( 'post_type' => 'work', 'posts_per_page' => -1 ) ); ?>
+							<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+								<h2><?php the_title();?></h2>
+								<?php the_content();?>
+							<?php endwhile; wp_reset_query(); ?>
+
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>#3 Plugins</h2>
+					<ul>
+						<li class="fragment"><a href="https://wordpress.org/plugins/custom-post-type-ui/" target="_blank">Custom Post Type UI</a></li>
+						<li class="fragment"><a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Advance Custom Fields</li>
+						<li class="fragment"><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></li>
+						<li class="fragment"><em>etc.</em></li>
+					</ul>
+				</section>
+				<section>
+					<h2>DEMO</h2>
+					<p>Bahan - bahan : </p>
+					<ul>
+						<li>Underscores</li>
+						<li>HTML template -> <a href="http://www.free-css.com/free-css-templates/page202/stanley">Download</a></li>
+						<li>Codex</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
